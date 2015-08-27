@@ -97,6 +97,7 @@ def roll(args):
   from recipe_engine import package
   repo_root, config_file = get_package_config(args)
   repo_root = os.path.dirname(os.path.dirname(os.path.realpath(repo_root)))
+  print 'repo_root = %s' % repo_root
   context = package.PackageContext.from_proto_file(repo_root, config_file)
   package_spec = package.PackageSpec.load_proto(config_file)
 
