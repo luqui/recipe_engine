@@ -147,7 +147,7 @@ def main():
       '--no-fetch', action='store_true',
       help='Disable automatic fetching')
   parser.add_argument(
-      '--boostrap-script',
+      '--bootstrap-script',
       help='Path to the script used to bootstrap this tool (internal use only)')
 
   subp = parser.add_subparsers()
