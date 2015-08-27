@@ -23,7 +23,9 @@ def get_package_config(args):
   assert args.package, 'No recipe config (--package) given.'
   assert os.path.exists(args.package), (
       'Given recipes config file %s does not exist.' % path)
-  return args.package, package.ProtoFile(args.package)
+  repo_root = os.path.dirname(os.path.dirname(os.path.dirname(
+      os.path.realpath(args.package))))
+  return repo_root, package.ProtoFile(args.package)
 
 
 def simulation_test(package_deps, args):
@@ -96,8 +98,6 @@ def run(package_deps, args):
 def roll(args):
   from recipe_engine import package
   repo_root, config_file = get_package_config(args)
-  repo_root = os.path.dirname(os.path.dirname(os.path.realpath(repo_root)))
-  print 'repo_root = %s' % repo_root
   context = package.PackageContext.from_proto_file(repo_root, config_file)
   package_spec = package.PackageSpec.load_proto(config_file)
 
