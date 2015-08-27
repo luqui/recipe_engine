@@ -23,7 +23,7 @@ def get_package_config(args):
   assert args.package, 'No recipe config (--package) given.'
   assert os.path.exists(args.package), (
       'Given recipes config file %s does not exist.' % path)
-  return path, package.ProtoFile(path)
+  return args.package, package.ProtoFile(args.package)
 
 
 def simulation_test(package_deps, args):
